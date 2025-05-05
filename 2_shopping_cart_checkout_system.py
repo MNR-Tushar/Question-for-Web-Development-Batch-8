@@ -72,17 +72,21 @@ while True:
     """
     print(manu)
 
-    n=int(input("Enter your option: "))
-
-    if n==5:
-        break
-    elif n==4:
-        clear_view()
-    elif n==1:
-        add_item()
-    elif n==2:
-       view_item()
-    elif n==3:
-        total_price()
-    else:
+    try:
+        
+        n=int(input("Enter your option: "))
+        if n==5:
+            break
+        elif n==4:
+            clear_view()
+        elif n==1:
+            add_item()
+        elif n==2:
+            view_item()
+        elif n==3:
+            total_price()
+        else:
+            print("\nPlease press only 1-5!")
+    except:
         print("\nPlease press only 1-5!")
+
