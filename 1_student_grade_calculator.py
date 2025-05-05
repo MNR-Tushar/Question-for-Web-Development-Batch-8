@@ -45,33 +45,38 @@ print("Student Grade Calculator")
 while True:
     marks=[]
     subject_name=[]
-    name=input("Enter Your Name: ")
-    total_sub=int(input("How many subjects: "))
 
-    for i in range(0,total_sub):
-        subject_name.append(input("Enter your Subject name: "))
-        marks.append(int(input(f"Enter your {subject_name[i]} mark: ")))
-    
-        while marks[i]<0 or marks[i]>100:
-            print("Please input mark between 0-100")
-            marks[i]=int(input(f"Enter your {subject_name[i]} mark: "))
-
-    
-    #Display student information
-    print(f"\nStudent Name: {name}")
-    print("Grade All Subject")
-    print("------------------------")
-    for sub in range(0,total_sub):
-        print(f"Grade of {subject_name[sub]} : {Grade(marks[sub])}")
-    
     try:
-        G=total_point/total_sub
-        print("------------------------")
+        name=input("Enter Your Name: ")
+        total_sub=int(input("How many subjects: "))
+
+        try:
+            for i in range(0,total_sub):
+                subject_name.append(input("Enter your Subject name: "))
+                marks.append(int(input(f"Enter your {subject_name[i]} mark: ")))
+
+            while marks[i]<0 or marks[i]>100:
+                print("Please input mark between 0-100")
+                marks[i]=int(input(f"Enter your {subject_name[i]} mark: "))
+        except:
+            print("Invalid Mark")
+            continue
+
+        #Display student information
+        print(f"\nStudent Name: {name}")
+        print("Grade All Subject")
+        print("----------------------")
+        for sub in range(0,total_sub):
+            print(f"Grade of {subject_name[sub]} : {Grade(marks[sub])}")
+            G=total_point/total_sub
+        print("----------------------")
         print(f"GPA: {G} Grade: {L_grade(G)}")
+        print("\n")
+
     except:
-        print("Please input your total subject!")
+        print("\nInvalid Total Subject\n")
     
     total_point=0
-    print("\n")
+   
 
 
