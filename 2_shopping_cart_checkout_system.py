@@ -1,9 +1,24 @@
+
 all_item=[]
+
 def add_item():
 
     try:
+
         item_name=input("Name of Item: ")
-        item_quantity=int(input("Total item: "))
+        while item_name.isdigit():
+            print("Please input valid item name.")
+            item_name=input("Name of Item: ")
+        
+        item_name=item_name.lower()
+        item_name=item_name.capitalize()
+        
+        item_quantity=int(input("Quantity of item: "))
+        while item_quantity<=0:
+            print("Please input Quantity grather than 0")
+            item_quantity=int(input("Quantity of item: "))
+
+
         item_price=int(input("Item price: "))
         dict1={
         "name":item_name,
@@ -12,10 +27,9 @@ def add_item():
         }
         all_item.append(dict1)
     except:
-        print("\nPlease Input Integer Number and String for Item Name")
+        print("\nInvalid Quantity or Price!")
     
     
-
 def view_item():
 
     if len(all_item)==0:
@@ -58,10 +72,13 @@ def clear_view():
         print("\nNo item in view.")
     else:
         all_item.clear()
+        print("successfully clear item in view.")
+
 
 while True:
 
     manu="""
+Shopping Cart Checkout System
     ==== Menu ====
     1. Add item
     2. View Cart
@@ -73,7 +90,6 @@ while True:
     print(manu)
 
     try:
-        
         n=int(input("Enter your option: "))
         if n==5:
             break
