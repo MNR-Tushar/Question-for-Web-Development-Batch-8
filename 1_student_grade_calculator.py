@@ -47,7 +47,15 @@ while True:
     subject_name=[]
 
     try:
-        name=input("Enter Your Name: ")
+
+        name=input("Enter your Name: ")
+        while name.isdigit():
+            print("Please input valid name.")
+            name=input("Enter your Name: ")
+        
+        name=name.lower()
+        name=name.capitalize()
+
         total_sub=int(input("How many subjects: "))
 
         try:
