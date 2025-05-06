@@ -6,12 +6,21 @@ def add_item():
     
     try:
         name=input("Item Name: ")
-        quantity=int(input("Qantity: "))
-        price=int(input("Unit price: "))
+        while name.isdigit():
+            print("Please input valid item name.")
+            name=input("Item Name: ")
+        
+        name=name.lower()
+        name=name.capitalize()
 
-        while quantity<=0 or price<=0:
-            print("Please input Qantity and Price grather than 0")
-            quantity=int(input("Qantity: "))
+        quantity=int(input("Quantity: "))
+        while quantity<=0:
+            print("Please input Quantity grather than 0")
+            quantity=int(input("Quantity: "))
+
+        price=int(input("Unit price: "))
+        while price<=0:
+            print("Please input Price grather than 0")
             price=int(input("Unit price: "))
 
         x=All_Item.get(name)
@@ -30,7 +39,7 @@ def view_item():
     if len(All_Item)==0:
         print("\nNo Item in View!")
     else:
-        print("Group by Item")
+        print("\nGroup by all item")
         for i in All_Item:
             print(f"{i} -> Quantity: {All_Item.get(i)}")
 
@@ -43,7 +52,6 @@ def total_revenue():
             print("\nItem: ",i)
             print("Total Quantity Sold: ",All_Item.get(i))
             print("Total Revenue: ",All_price[i])
-            print("\n")
     
 def clear_item():
     if len(All_Item)==0:
@@ -51,23 +59,23 @@ def clear_item():
     else:
         All_price.clear()
         All_Item.clear()
-
+        print("\nAll Item clear in View!")
 
 while True:
 
     manu="""
+Daily Sales Report Generator
     ---- Manu -----
-    1.Add Item       
-    2.View Item      
-    3.Total Revenue  
-    4.Clear All Item    
-    5.Exit           
+    1. Add Item       
+    2. View Item      
+    3. Total Revenue  
+    4. Clear All Item    
+    5. Exit           
     ------*_*--------
     """
     print(manu)
 
     try:
-
         n=int(input("Enter Your Option: "))
         if n==1:
             add_item()
@@ -83,5 +91,3 @@ while True:
             print("\nInvalid Input. Press 1-5")
     except:
         print("\nInvalid Input. Try again!")
-
-#input try extend, input name same case nita hoba, ensure quantity/price > 0
